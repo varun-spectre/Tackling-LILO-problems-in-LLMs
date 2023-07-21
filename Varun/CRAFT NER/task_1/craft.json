@@ -1,0 +1,43 @@
+[
+{
+    "dataset_name": "CRAFT NER", 
+    "input": "GluR - B is critically involved in the formation and trafficking of AMPARs , and dominates their ion conductance and gating properties [ 40 - 46 ] .",
+    "expected output": "GluR - B <GGP>, ion <CHEBI>",
+    "output": "GluR - B <SO>, AMPARs <GGP>, ion conductance <GO>, gating properties <GO>", 
+    "known_issues": [2, 4], 
+    "new_issues": ["Sometimes LLMs identify correct entity but also the surrounding words as a combined entity"]
+},
+{
+    "dataset_name": "CRAFT NER", 
+    "input": "Nuclei were purified by centrifugation ( 10 , 000 x g for 30 min , at 4 degrees C ) on sucrose cushions ( buffer 1 with 1 . 2 M sucrose ) and resuspended in nuclease buffer ( 50 mM Tris - HCl [ pH 7 . 5 ] , 20 mM NaCl , 0 . 32 M sucrose , 4 mM MgCl2 , 1 mM CaCl2 ) . About 2 . 106 nuclei were incubated with increasing quantities of MNase ( 0 . 04 - 1 . 6 units ) or DNase I ( 0 . 25 - 16 units ) . Digestion time at 37 degrees C was 10 min for MNase and 2 min for DNase I . Digestions were stopped by adding SDS to 1 % and EDTA to 50 mM . DNAs were prepared by proteinase K digestion followed by phenol - chloroform extraction and isopropanol precipitation . To test the association of histone H3 with chromatin in control and p150 - depleted cells , isolated nuclei were incubated on ice for 30 min in buffer 2 ( 50 mM Hepes [ pH7 . 9 ] , 20 % Glycerol , 3 mM MgCl2 , 0 . 1 % IGEPAL , 0 . 5 mM DTT , 0 . 5 mM PMSF ) supplemented with either 0 . 1 M , 0 . 3 M , 0 . 45 M , 0 . 7 M , or 1 M NaCl .",
+    "expected output": "cells <CL>",
+    "output": "centrifugation <GO>, sucrose <CHEBI>, cushions <SO>, nuclease buffer <SO>, MNase <SO>, DNase I <SO>, SDS <SO>, EDTA <CHEBI>, phenol <CHEBI>, chloroform <CHEBI>, isopropanol <CHEBI>, precipitation <SO>, histone H3 <GGP>, chromatin <GGP>, control <CL>, p150 <SO>, cells <CL>, buffer 2 <SO>", 
+    "known_issues": [], 
+    "new_issues": ["LLMs although it predicted the correct output, since the input is large it also predicted lot of flase positives"]
+},
+{
+    "dataset_name": "CRAFT NER", 
+    "input": "GluR - B is critically involved in the formation and trafficking of AMPARs , and dominates their ion conductance and gating properties [ 40 - 46 ] .",
+    "expected output": "Calb2 <GGP>, Rb <GGP>, Rb <GGP>, E2f1 <GGP>",
+    "output": "Calb2 <GGP>, Rb KO IPL <GGP>, Rb <GGP>, E2f1 <GGP>, DKO retina <GGP>", 
+    "known_issues": [], 
+    "new_issues": ["Sometimes LLMs identify correct entity but also the surrounding words as a combined entity", "LLMs although it predicted the correct output, since the input is large it also predicted lot of flase positives" ]
+},
+{
+    "dataset_name": "CRAFT NER", 
+    "input": "As expected , no bandshift was observed with protein extract from a mouse lacking MTF - 1 ( Mtf1Mx - cre ) .",
+    "expected output": "protein <CHEBI>, mouse <Taxon>, MTF - 1 <GGP>, mouse <NCBITaxon>",
+    "output": "MTF - 1 <GGP>, Mtf1Mx - cre <GGP>, protein extract <SO>, mouse <Taxon>, mouse <NCBITaxon>", 
+    "known_issues": [2, 4], 
+    "new_issues": ["Sometimes LLMs identify correct entity but also the surrounding words as a combined entity"]
+},
+{
+    "dataset_name": "CRAFT NER", 
+    "input": "Stress proteins have been shown to be expressed in non - stressed cells during development and differentiation [ 25 ] ",
+    "expected output": "proteins <CHEBI>, cells <CL>",
+    "output": ["Stress proteins <SO>, cells <SO>, development <GO>, differentiation <GO>"], 
+    "known_issues": [2, 4], 
+    "new_issues": ["Sometimes LLMs identify correct entity but also the surrounding words as a combined entity", "LLMs sometimes predict flase positives"]
+}
+]
+
